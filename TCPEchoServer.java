@@ -20,17 +20,21 @@ public class TCPEchoServer {
 
     int recvMsgSize;
     byte[] byteBuffer = new byte[BUFSIZE];
+    System.out.println("");
+    System.out.println("* chat start *");
+    System.out.println("[name] : [message]");
+    System.out.println("");
 
     for (;;) {
       Socket clntSock = servSock.accept();     // Get client connection
 
-      System.out.println("Handling client at " + clntSock.getInetAddress().getHostAddress() + " on port " + clntSock.getPort());
+      //System.out.println("Handling client at " + clntSock.getInetAddress().getHostAddress() + " on port " + clntSock.getPort());
       InputStream in = clntSock.getInputStream();
       OutputStream out = clntSock.getOutputStream();
 
       while ((recvMsgSize = in.read(byteBuffer)) != -1){
         out.write(byteBuffer, 0, recvMsgSize);
-	System.out.println("Received: " + new String(byteBuffer));
+	      System.out.println(new String(byteBuffer));
         content = content + (new String(byteBuffer));
       }
       clntSock.close();

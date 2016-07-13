@@ -16,7 +16,7 @@ public class TCPEchoClient {
     int servPort = Integer.parseInt(args[2]);
 
     Socket socket = new Socket(server, servPort);
-    System.out.println("Connected to server...sending echo string");
+    //System.out.println("Connected to server...sending echo string");
 
     InputStream in = socket.getInputStream();
     OutputStream out = socket.getOutputStream();
