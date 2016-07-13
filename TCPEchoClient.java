@@ -13,7 +13,9 @@ public class TCPEchoClient {
       String server = args[0];
       int servPort = Integer.parseInt(args[2]);
 
-      String message = args[3] + ": "+ args[1];
+      BufferedReader input = new BufferedReader (new InputStreamReader (System.in));
+      String message = args[3] + ": "+ input.readLine( );;
+
       byte[] byteBuffer = message.getBytes();
 
       Socket socket = new Socket(server, servPort);
@@ -32,7 +34,8 @@ public class TCPEchoClient {
         totalBytesRcvd += bytesRcvd;
       }
 
-      System.out.println(new String(byteBuffer));
+      System.out.println("");
+      System.out.println("Succeclly send!!");
       socket.close();
     }
   }
